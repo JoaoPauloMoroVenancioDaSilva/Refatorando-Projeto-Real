@@ -17,7 +17,7 @@ public class ListaDinamica {
 
     public boolean estaVazio() {
         if(primeiro == null) { //A lista está vazia
-            System.out.println("Não existem elementos na lista.");
+            System.out.println("Adicionando primeiro elemento da lista...");
             return true;
         } else {
             return false;
@@ -28,45 +28,32 @@ public class ListaDinamica {
         No novoNo = new No(conteudo);
         if(estaVazio()) {
             this.primeiro = novoNo;
-        } else {
+        }else {
             No aux = this.primeiro;
-            while (aux.getProx() != null) {
+            while(aux.getProx() != null) {
                 aux = aux.getProx();
             }
             aux.setProx(novoNo);
         }
     }
 
-    public boolean verificaExistencia(String conteudo) {
-        if(estaVazio()) {
-            return false;
-        } else {
-            No aux = this.primeiro;
-            while(aux != null) {
-                if(aux.getConteudo() == conteudo) {
-                    return true;
-                }
-                aux = aux.getProx();
-            }
-            return false;
-        }
-    }
 
     public void removerValor(String conteudo) {
         No aux = this.primeiro;
-        if(this.primeiro.getConteudo() == conteudo) {//Removendo primeiro elemento
+        if (this.primeiro.getConteudo().equals(conteudo)) {//Removendo primeiro elemento
             this.primeiro = this.primeiro.getProx();
         } else {
-            if(verificaExistencia(conteudo)){
+            try {
                 while (aux != null) {
-                    if(aux.getProx().getConteudo() == conteudo) {
+                    if (aux.getProx().getConteudo().equals(conteudo)) {
                         aux.setProx(aux.getProx().getProx());
                         return;
                     }
                     aux = aux.getProx();
                 }
+            }catch (Exception e) {
+                System.out.println("Não foi possível remover o elemento (" + conteudo+ ") da lista, pois não existe!");
             }
-            System.out.println("O elemento não existe.");
         }
     }
 }
