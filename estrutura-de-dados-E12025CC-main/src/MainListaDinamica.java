@@ -33,15 +33,7 @@ public class MainListaDinamica {
                         listaDinamica.inserirValor(valorInserir);
                     }
                     break;
-
-                case 7:
-                    if (listaDinamica != null) {
-
-                    } else {
-                        System.out.println("Crie a lista primeiro!");
-                    }
-                    break;
-
+                    
                 case 2:
                     if (listaDinamica != null) {
                         System.out.print("Digite um valor para remover: ");
