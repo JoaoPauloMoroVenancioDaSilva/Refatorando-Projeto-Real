@@ -1,10 +1,12 @@
 public class ListaDinamica {
     private No primeiro;
 
+    //Construtor da Lista Dinâmica, também é inserido o primeiro valor
     public ListaDinamica(String conteudo) {
         this.primeiro = new No(conteudo);
     }
 
+    //Lista os elementos da Lista
     public void verLista() {
         if(!estaVazio()) {
             No aux = primeiro;
@@ -15,15 +17,17 @@ public class ListaDinamica {
         }
     }
 
+    //Verifica se a lista está vazia
     public boolean estaVazio() {
-        if(primeiro == null) { //A lista está vazia
-            System.out.println("Adicionando primeiro elemento da lista...");
+        if(primeiro == null) {
+            System.out.println("Adicione/Adicionando o primeiro elemento da lista...");
             return true;
         } else {
             return false;
         }
     }
 
+    //Insere um valor na lista
     public void inserirValor(String conteudo) {
         No novoNo = new No(conteudo);
         if(estaVazio()) {
@@ -37,7 +41,7 @@ public class ListaDinamica {
         }
     }
 
-
+    //Remove um valor presente na lista
     public void removerValor(String conteudo) {
         No aux = this.primeiro;
         if (this.primeiro.getConteudo().equals(conteudo)) {//Removendo primeiro elemento
