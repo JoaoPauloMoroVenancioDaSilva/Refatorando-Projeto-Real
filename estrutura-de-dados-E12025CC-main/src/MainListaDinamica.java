@@ -13,7 +13,7 @@ public class MainListaDinamica {
         do {
             System.out.println("\nEscolha a sua opção\n" +
                     "1 - Criar Lista/ Inserir Valor\n" +
-                    "2 - Remover valor por índice\n" +
+                    "2 - Remover valor\n" +
                     "3 - Ver Lista\n" +
                     "4 - Sair\n" +
                     "Escolha a opção");
