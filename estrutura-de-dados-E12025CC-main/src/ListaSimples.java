@@ -2,12 +2,14 @@ public class ListaSimples {
     private int tamanho;
     Integer [] lista;
 
+    //Construtor da classe Lista Simples
     public ListaSimples(int tamanhoEstrutura) {
         this.tamanho = tamanhoEstrutura;
         lista = new Integer[tamanhoEstrutura];
         System.out.println("A lista criada foi criada com sucesso. Seu tamanho é igual a:" + tamanhoEstrutura);
     }
 
+    //Lista os elementos da Lista
     public void verLista() {
         System.out.println("Exibindo elementos da lista.");
         for (int i = 0; i < this.tamanho; i++) {
@@ -15,6 +17,7 @@ public class ListaSimples {
         }
     }
 
+    //Insere um valor do tipo int na Lista se tiver espaço, se não houver é mandado uma mensagem
     public void inserirValor(int valor) {
         for (int i = 0; i < tamanho; i++) {
             if(checarIndice(i)) {
@@ -26,6 +29,7 @@ public class ListaSimples {
         System.out.println("Todas posições estão preenchidas.");
     }
 
+    //Verifica se o valor presente no índice selecionado é null
     public boolean checarIndice(int indice) {
         if(this.lista[indice] == null) {
             return true;
@@ -34,16 +38,19 @@ public class ListaSimples {
         }
     }
 
+    //Remove um elemento da lista escolhendo o índice
     public void removerPorIndice(int indice) {
         if(checarIntervalo(indice)){
             if(checarIndice(indice)){
                 System.out.println("Não existe um valor a ser removido.");
             } else {
                 this.lista[indice] = null;
+                System.out.println("Valor removido com sucesso.");
             }
         }
     }
 
+    //Verifica se na Lista existe o valor especificado
     public boolean buscaValor(int valor) {
         for (int i = 0; i < this.tamanho; i++) {
             if(!checarIndice(i)) {
@@ -57,6 +64,7 @@ public class ListaSimples {
         return false;
     }
 
+    //Checa se o valor especificado está no índice especificado
     public boolean checarValorIndice(int valor, int indice) {
         if(this.lista[indice] == valor) {
             return true;
@@ -64,6 +72,7 @@ public class ListaSimples {
         return false;
     }
 
+    //Verifica se o índice especificado está presente na Lista
     public boolean checarIntervalo(int indice) {
         if(indice >= 0 && indice < this.tamanho){
             return true;
