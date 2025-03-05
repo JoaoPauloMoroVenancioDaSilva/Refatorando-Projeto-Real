@@ -1,62 +1,63 @@
 public class ListaDinamica {
-    private No primeiro;
+    private No primeiro;  // armazena o primeiro nó da lista (null)
 
-    //Construtor da Lista Dinâmica, também é inserido o primeiro valor
+    // construtor que cria a lista com um primeiro nó  e recebe o conteúdo para o nó
     public ListaDinamica(String conteudo) {
-        this.primeiro = new No(conteudo);
+        this.primeiro = new No(conteudo);  // nó com o conteúdo passado
     }
 
-    //Lista os elementos da Lista
+    // método para imprimir todos os conteúdos dos nós da lista
     public void verLista() {
-        if(!estaVazio()) {
+        if(!estaVazio()) {  // analisa se a lista não está vazia
             No aux = primeiro;
-            while(aux != null) {
-                System.out.println(aux.getConteudo());
+            while(aux != null) {  // enquanto o nó atual não for nulo
+                System.out.println(aux.getConteudo());  // mostra o conteúdo do nó
                 aux = aux.getProx();
             }
         }
     }
 
-    //Verifica se a lista está vazia
+    // método que verifica se a lista está vazia
     public boolean estaVazio() {
-        if(primeiro == null) {
-            System.out.println("Adicione/Adicionando o primeiro elemento da lista...");
-            return true;
+        if(primeiro == null) {  // verifica se o primeiro nó é null, ou seja, lista vazia
+            System.out.println("Adicionando primeiro elemento da lista...");  // indica que a lista está vazia
+            return true;  // retorna true se a lista estiver vazia
         } else {
-            return false;
+            return false;  // retorna false caso a lista não esteja vazia
         }
     }
 
-    //Insere um valor na lista
+    // método que insere um valor no final da lista
     public void inserirValor(String conteudo) {
         No novoNo = new No(conteudo);
-        if(estaVazio()) {
+        if(estaVazio()) {  // analisa se a lista está vazia
             this.primeiro = novoNo;
-        }else {
-            No aux = this.primeiro;
+        } else {
+            No aux = this.primeiro;  // busca o último nó
             while(aux.getProx() != null) {
                 aux = aux.getProx();
             }
-            aux.setProx(novoNo);
+            aux.setProx(novoNo);  //  define o novo nó como o próximo do último nó
         }
     }
 
-    //Remove um valor presente na lista
+    // método que remove um valor específico da lista
     public void removerValor(String conteudo) {
-        No aux = this.primeiro;
-        if (this.primeiro.getConteudo().equals(conteudo)) {//Removendo primeiro elemento
+        No aux = this.primeiro;  /
+        if (this.primeiro.getConteudo().equals(conteudo)) {  // se o primeiro nó contém o valor a ser removido
             this.primeiro = this.primeiro.getProx();
-        } else {
             try {
-                while (aux != null) {
-                    if (aux.getProx().getConteudo().equals(conteudo)) {
-                        aux.setProx(aux.getProx().getProx());
-                        return;
+
+                while (aux != null) { // enquanto o nó atual não for nulo
+                    if (aux.getProx().getConteudo().equals(conteudo)) {   // analisa se o próximo nó contém o valor a ser removido
+
+                        aux.setProx(aux.getProx().getProx());  // remove o nó atual, apontando para o nó seguinte do nó removido
+                        return;  // sai do método após a remoção
                     }
                     aux = aux.getProx();
                 }
-            }catch (Exception e) {
-                System.out.println("Não foi possível remover o elemento (" + conteudo+ ") da lista, pois não existe!");
+            } catch (Exception e) {
+                System.out.println("Não foi possível remover o elemento (" + conteudo + ") da lista, pois não existe!");  // caso não encontre o valor na lista
             }
         }
     }
